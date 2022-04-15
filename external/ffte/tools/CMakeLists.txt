@@ -6,6 +6,8 @@ find_package(MPI REQUIRED)
 
 if(CMAKE_Fortran_COMPILER_ID STREQUAL XL)
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -qfixed=72 -qxlf77=intarg")
+elseif(CMAKE_Fortran_COMPILER_ID STREQUAL GNU)
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fallow-argument-mismatch")
 endif()
 
 add_library(ffte zdfft2d.f fft235.f kernel.f dzfft2d.f factor.f zdfft3d.f fftever.f dzfft3d.f mfft235.f zfft1d.f zfft2d.f zfft3d.f)
